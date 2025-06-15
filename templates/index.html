@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>ChatGPT チャット</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="chat-container">
+    <h1>ChatGPT チャット</h1>
+
+<!-- チャット履歴表示領域 -->
+<div class="chat-box" id="chat-box">
+  {% for message in history %}
+    {% if message.role == "user" %}
+      <div class="user-message">{{ message.content }}</div>
+    {% elif message.role == "assistant" %}
+      <div class="ai-message">{{ message.content | replace('\n', '<br>') | safe }}</div>
+    {% endif %}
+  {% endfor %}
+</div>
+
+    <!-- メッセージ入力フォーム -->
+    <form method="POST">
+      <textarea name="prompt" placeholder="メッセージを入力..." required></textarea>
+      <button type="submit">送信</button>
+    </form>
+  </div>
+
+  <!-- JavaScriptでスクロールを最下部に -->
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

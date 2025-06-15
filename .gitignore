@@ -1,0 +1,14 @@
+# Python
+__pycache__/
+*.py[cod]
+
+# 仮想環境
+myenv/
+
+# アップロード/出力されたファイル
+uploads/
+outputs/
+*.xlsx
+
+# 環境変数
+.env
